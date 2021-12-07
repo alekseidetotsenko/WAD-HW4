@@ -83,6 +83,7 @@ nav div > button {
     color: white;
 }
 
+
 nav div > input {
     box-sizing: border-box;
     height: 30px;
@@ -194,4 +195,16 @@ header + section {
     color: gray;
     background-color: aliceblue;
     padding: 5px;
+}
+
+button{
+    box-sizing: border-box;
+    height: 30px;
+    width: 10%;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #5d5c61;
+    cursor: pointer;
+    background-color:#0b5e92;
+    color: white;
 }

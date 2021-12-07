@@ -55,22 +55,39 @@
  <p class="likesCount">
     <%= post.likes %>
     </p>
-    <a class="increaseLikes" data-del="<%= posts.id %>">Like</a>
+   </div>
+   <p> <%= post.id %></p>
+
+   </div>
  </a>
+ <button class="increaselikes" data-put="<%= post.id %>">Like</button>
+ <script>
+   let putreq = document.querySelector('button.increaselikes');
+   putreq.addEventListener('click', (e) => {
+   let endpoint = `/posts/${putreq.dataset.put}`;
+   fetch(endpoint, {
+   method: 'PUT',
+   }).then(window.location.href = '/posts')
+   });
+   </script>
  <% }) %>
  <% } else { %>
  <p>You did not post anything...</p>
  <% } %>
  </div>
+ <!-- <button class="increaselikes" data-put="<%= posts.id %>">like</button>
  <script>
-    const putreq = document.querySelector('a.increaseLikes');
-    putreq.addEventListener('click', (e) => {
+    const putreq = document.queryselector('button.increaselikes');
+    putreq.addeventlistener('click', (e) => {
     const endpoint = `/posts/${putreq.dataset.put}`;
     fetch(endpoint, {
-    method: 'PUT',
+    method: 'put',
     })
     });
-    </script>
+    </script> -->
+   
+
+    
  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

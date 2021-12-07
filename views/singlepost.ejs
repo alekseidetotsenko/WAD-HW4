@@ -23,10 +23,10 @@
  <%= posts.likes %>
 </p>
  </div>
- <a class="delete" data-del="<%= posts.id %>">Delete</a>
+ <button class="delete" data-del="<%= posts.id %>">Delete</button>
  </div>
  <script>
- const delreq = document.querySelector('a.delete');
+ const delreq = document.querySelector('button.delete');
  delreq.addEventListener('click', (e) => {
  const endpoint = `/posts/${delreq.dataset.del}`;
  fetch(endpoint, {

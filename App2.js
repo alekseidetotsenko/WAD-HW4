@@ -34,23 +34,27 @@ app.get('/singlepost/:id', async(req, res) => {
         const posts = await pool.query(
             "SELECT * FROM public.posts WHERE id = $1", [id]
         );
-        res.render('singlepost', { posts: posts.rows[0] });
+        if(typeof posts.rows[0] !== 'undefined'){
+            res.render('singlepost', { posts: posts.rows[0] });
+        }else{
+            res.status(404).render('404');
+        }
     } catch (err) {
         console.error(err.message);
     }
 });
-app.get('/posts/:id', async(req, res) => {
-    try {
-        const { id } = req.params;
-        console.log("get a post request has arrived");
-        const Apost = await pool.query(
-            "SELECT * FROM public.posts WHERE id = $1", [id]
-        );
-        res.json(Apost.rows[0]);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
+// app.get('/posts/:id', async(req, res) => {
+//     try {
+//         const { id } = req.params;
+//         console.log("get a post request has arrived");
+//         const Apost = await pool.query(
+//             "SELECT * FROM public.posts WHERE id = $1", [id]
+//         );
+//         res.json(Apost.rows[0]);
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// });
 app.delete('/posts/:id', async(req, res) => {
     try {
         console.log(req.params);
@@ -67,15 +71,18 @@ app.delete('/posts/:id', async(req, res) => {
 });
 
 app.put('/posts/:id', async(req, res) => {
+    console.log("nokurat");
     try {
     console.log("update request has arrived");
-    const {id} = req.params;
+    const { id } = req.params;
+    const sd = req.params;
     const post = req.body;
-    const likes = req.likes + 1;
     const updatepost = await pool.query(
-   "UPDATE nodetable(title, body, likes) values ($2, $3, $4) WHERE id = $1", [id, post.title, post.body, post.likes]
-   );
-   res.redirect('posts');
+   "UPDATE public.posts set likes = (likes + 1) WHERE id = $1;", [id]
+    ); 
+    const updatepostlikegiven = await pool.query(
+    "UPDATE public.posts set likegiven = 'disabled' WHERE id = $1;", [id]
+    ); 
     } catch (err) {
     console.error(err.message);
     }
@@ -86,7 +93,7 @@ app.post('/posts', async(req, res) => {
         const post = req.body;
         console.log(post);
         const newpost = await pool.query(
-            "INSERT INTO public.posts(title, body) values ($1, $2) RETURNING*", [post.title, post.body]
+            "INSERT INTO public.posts(title, body, likegiven) values ($1, $2, '') RETURNING*", [post.title, post.body]
     );
         res.redirect('posts');
     } catch (err) {
