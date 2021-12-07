@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav>
+ <a href="/">Home </a> |
+ <a href="/posts">Posts page</a> |
+ <a href="/contactus">Contact us</a>
+ </nav>
+<div class="posts list">
+ <h2>All posts</h2>
+ <% if (posts.length == 0) { %>
+    <p> You did not post anything... </p>
+ <% } %>
+ <% posts.forEach(post => { %>
+ <h3 class="title">
+ <%= post.title %>
+ </h3>
+ <p class="body">
+ <%= post.body %>
+ </p>
+ <% }) %>
+ </div>
+<footer class="footer">
+ <p>© WAD 2021 </p>
+</footer>
+</body>
+</html> -->
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="/style.css">
+ <title>Posts</title>
+</head>
+<body>
+ <h1>Posts page</h1>
+ <%- include('./partials/navbar.ejs') %>
+ <div class="posts list">
+ <h2>All posts</h2>
+ <% if (posts.length > 0) { %>
+ <% posts.forEach(post => { %>
+ <a class="singlepost" href="/singlepost/<%= post.id %>">
+ <h3 class="title">
+ <%= post.title %>
+ </h3>
+ <p class="body">
+ <%= post.body %>
+ </p>
+ </a>
+ <% }) %>
+ <% } else { %>
+ <p>You did not post anything...</p>
+ <% } %>
+ </div>
+ <%- include('./partials/footer.ejs') %>
+</body>
+</html>
