@@ -52,12 +52,25 @@
  <p class="body">
  <%= post.body %>
  </p>
+ <p class="likesCount">
+    <%= post.likes %>
+    </p>
+    <a class="increaseLikes" data-del="<%= posts.id %>">Like</a>
  </a>
  <% }) %>
  <% } else { %>
  <p>You did not post anything...</p>
  <% } %>
  </div>
+ <script>
+    const putreq = document.querySelector('a.increaseLikes');
+    putreq.addEventListener('click', (e) => {
+    const endpoint = `/posts/${putreq.dataset.put}`;
+    fetch(endpoint, {
+    method: 'PUT',
+    })
+    });
+    </script>
  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

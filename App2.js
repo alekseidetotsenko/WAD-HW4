@@ -19,7 +19,7 @@ app.get('/posts', async(req, res) => {
     try {
         console.log("get posts request has arrived");
         const posts = await pool.query(
-            "SELECT * FROM nodetable"
+            "SELECT * FROM public.posts"
         );
         res.render('posts', { posts: posts.rows });
     } catch (err) {
@@ -32,7 +32,7 @@ app.get('/singlepost/:id', async(req, res) => {
         console.log(req.params.id);
         console.log("get a single post request has arrived");
         const posts = await pool.query(
-            "SELECT * FROM nodetable WHERE id = $1", [id]
+            "SELECT * FROM public.posts WHERE id = $1", [id]
         );
         res.render('singlepost', { posts: posts.rows[0] });
     } catch (err) {
@@ -44,7 +44,7 @@ app.get('/posts/:id', async(req, res) => {
         const { id } = req.params;
         console.log("get a post request has arrived");
         const Apost = await pool.query(
-            "SELECT * FROM nodetable WHERE id = $1", [id]
+            "SELECT * FROM public.posts WHERE id = $1", [id]
         );
         res.json(Apost.rows[0]);
     } catch (err) {
@@ -58,19 +58,35 @@ app.delete('/posts/:id', async(req, res) => {
         const post = req.body;
         console.log("delete a post request has arrived");
         const deletepost = await pool.query(
-            "DELETE FROM nodetable WHERE id = $1", [id]
+            "DELETE FROM public.posts WHERE id = $1", [id]
         );
         res.redirect('posts');
     } catch (err) {
         console.error(err.message);
     }
 });
+
+app.put('/posts/:id', async(req, res) => {
+    try {
+    console.log("update request has arrived");
+    const {id} = req.params;
+    const post = req.body;
+    const likes = req.likes + 1;
+    const updatepost = await pool.query(
+   "UPDATE nodetable(title, body, likes) values ($2, $3, $4) WHERE id = $1", [id, post.title, post.body, post.likes]
+   );
+   res.redirect('posts');
+    } catch (err) {
+    console.error(err.message);
+    }
+   });
+
 app.post('/posts', async(req, res) => {
     try {
         const post = req.body;
         console.log(post);
         const newpost = await pool.query(
-            "INSERT INTO nodetable(title, body, urllink) values ($1, $2, $3) RETURNING*", [post.title, post.body, post.urllink]
+            "INSERT INTO public.posts(title, body) values ($1, $2) RETURNING*", [post.title, post.body]
     );
         res.redirect('posts');
     } catch (err) {

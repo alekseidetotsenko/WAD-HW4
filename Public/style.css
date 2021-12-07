@@ -1,0 +1,197 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b5e92;
+}
+
+#login_box {
+    display: flex;
+    box-shadow: 0px 0px 20px black;
+    flex-direction: column;
+    margin-top: 5%;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+}
+
+form {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+form > input {
+    color: gray;
+    border-radius: 2px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+#loginButton{
+    background-color: #0b5e92;
+    color: white;
+}
+
+#loginButton:hover {
+    background-color: darkred;
+}
+.userIcon {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 2%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5d5c61;
+}
+
+/*Descendant selector */
+nav div {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    flex-grow: 4;
+    padding: 10px;
+}
+
+nav img {
+    padding: 10px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+nav div {
+    align-content: center;
+}
+
+/*Child selector*/
+nav div > button {
+    box-sizing: border-box;
+    height: 30px;
+    width: 10%;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #5d5c61;
+    cursor: pointer;
+    background-color:#0b5e92;
+    color: white;
+}
+
+nav div > input {
+    box-sizing: border-box;
+    height: 30px;
+    width: 50%;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #5d5c61;
+}
+
+/*pseudo-class*/
+button:hover {
+    background-color: darkred;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+
+section {
+    padding: 30px;
+    height: 70%;
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+    background-color: aliceblue;
+    align-self: center;
+    align-items: center;
+}
+
+
+
+.commentSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.CommentBox {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    box-shadow: 0px 0px 20px black;
+    /*box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;*/
+    border-radius: 10px;
+}
+
+.commentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.timeStamp {
+    color: gray;
+    padding: 10px;
+}
+
+.commentFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.babyYodaCount {
+    color: gray;
+    font-size: 10px;
+    padding-top: 15px;
+}
+
+div ~ p {
+    padding: 2%;
+}
+
+.CommentBox button {
+    border-radius: 5px;
+    margin: 2%;
+    width: 30px;
+    height: 30px;
+    background-image: url('../../res/images/like.png');
+    background-color: darkgray;
+    background-size: 30px 30px;
+
+}
+
+.CommentBox > button > img {
+    max-height: fit-content;
+}
+header + section {
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-bottom: 5%;
+}
+
+
+.userInfoDropDownContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.userInfoDropDown{
+    width: fit-content;
+    color: gray;
+    background-color: aliceblue;
+    padding: 5px;
+}
