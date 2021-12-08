@@ -166,7 +166,7 @@ div ~ p {
     margin: 2%;
     width: 30px;
     height: 30px;
-    background-image: url('../../res/images/like.png');
+    background-image: url('like.png');
     background-color: darkgray;
     background-size: 30px 30px;
 
@@ -208,3 +208,21 @@ button{
     background-color:#0b5e92;
     color: white;
 }
+
+footer {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #5d5c61;
+  }
+
+  a {
+    color: aliceblue;
+    font-size: 1.5vw;
+    align-self: center;
+    border: 10px;
+    margin: 10px;
+  }

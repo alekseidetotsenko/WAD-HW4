@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -7,9 +8,10 @@
  <title>Single Post</title>
 </head>
 <body>
- <h1>Single post page</h1>
- <%- include('./partials/navbar.ejs') %>
- <div class="singlepost">
+    <%- include('./partials/navbar.ejs') %>
+ <section>
+ <!-- <div class="singlepost">
+<h1>Single post page</h1>
  <h2>
  <%= posts.title %>
  </h2>
@@ -17,14 +19,31 @@
  <p>
  <%= posts.body %>
  </p>
-
+</div>
  <div class="likesCount">
  <p>   
  <%= posts.likes %>
 </p>
  </div>
- <button class="delete" data-del="<%= posts.id %>">Delete</button>
- </div>
+ 
+ </div> -->
+
+ <div class="CommentBox">
+    <div class="commentHeader">
+      <img class="userIcon" src="wasp.jpg" alt="User icon">
+      <p class="timeStamp"><%= posts.timestamp %></p>
+    </div>
+    <p><%= posts.title %></p>
+    <img src="<%= posts.commentpicture %>" >
+    <p><%= posts.body %></p>
+    <div class="commentFooter">
+    </a>
+       <button class="increaselikes" data-put="<%= posts.id %>"></button>
+      <p class="babyYodaCount"> <%= posts.likes %> baby Yodas</p>
+      <button class="delete" data-del="<%= posts.id %>">Delete</button>
+    </div>
+  </div>
+</section>
  <script>
  const delreq = document.querySelector('button.delete');
  delreq.addEventListener('click', (e) => {

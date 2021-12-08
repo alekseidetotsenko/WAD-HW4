@@ -1,21 +1,27 @@
+<!DOCTYPE html>
 <html lang="en">
+    <head></head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=>, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
 <title> Create a post</title>
+</head>
 <body>
- <h1>Create a post</h1>
- <%- include('./partials/navbar.ejs') %>
- <br>
+   
+<%- include('./partials/navbar.ejs') %>
+<section>
  <div class="create-post">
  <form action="/posts" method="POST">
  <label for="title">Post title:</label>
  <input type="text" id="title" name="title" required><br><br>
  <label for="body">Post body:</label>
  <input type="text" id="body" name="body" required><br><br>
- <button>Submit</button>
  </form>
+
+ <button>Submit</button>
  </div>
+</section>
  <%- include('./partials/footer.ejs') %>
 </body>
 </html>
