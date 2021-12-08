@@ -34,16 +34,24 @@
       <p class="timeStamp"><%= posts.timestamp %></p>
     </div>
     <p><%= posts.title %></p>
-    <img src="<%= posts.commentpicture %>" >
+    <img class="commentImg" src="<%= posts.commentpicture %>">
     <p><%= posts.body %></p>
     <div class="commentFooter">
-    </a>
        <button class="increaselikes" data-put="<%= posts.id %>"></button>
       <p class="babyYodaCount"> <%= posts.likes %> baby Yodas</p>
-      <button class="delete" data-del="<%= posts.id %>">Delete</button>
     </div>
   </div>
+  <button class="delete" data-del="<%= posts.id %>">Delete</button>
 </section>
+<script>
+  let putreq = document.querySelector('button.increaselikes');
+  putreq.addEventListener('click', (e) => {
+  let endpoint = `/posts/${putreq.dataset.put}`;
+  fetch(endpoint, {
+  method: 'PUT',
+  }).then(window.location.href = '/posts')
+  });
+  </script>
  <script>
  const delreq = document.querySelector('button.delete');
  delreq.addEventListener('click', (e) => {

@@ -239,3 +239,17 @@ footer {
   .message404 {
     text-align: center;
   }
+
+  .delete{
+      position: relative;
+      left: 5%;
+      box-sizing: border-box;
+      height: 30px;
+      width: 10%;
+      margin: 0;
+      padding: 5px;
+      border: 1px solid #5d5c61;
+      cursor: pointer;
+      background-color:#0b5e92;
+      color: white;
+  }

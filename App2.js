@@ -34,11 +34,12 @@ app.get('/singlepost/:id', async(req, res) => {
         const posts = await pool.query(
             "SELECT * FROM public.posts WHERE id = $1", [id]
         );
-        if(typeof posts.rows[0] !== 'undefined'){
-            res.render('singlepost', { posts: posts.rows[0] });
-        }else{
-            res.status(404).render('404');
-        }
+        res.render('singlepost', { posts: posts.rows[0] });
+        // if(typeof posts.rows[0] !== 'undefined'){
+        //     res.render('singlepost', { posts: posts.rows[0] });
+        // }else{
+        //     res.status(404).render('404');
+        // }
     } catch (err) {
         console.error(err.message);
     }
