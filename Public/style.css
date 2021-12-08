@@ -143,6 +143,8 @@ section {
 .timeStamp {
     color: gray;
     padding: 10px;
+    font-size: 1vw;
+
 }
 
 .commentFooter {
@@ -222,6 +224,8 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: #5d5c61;
+    position: relative;
+    bottom: 0;
   }
 
   .navlink {
@@ -230,4 +234,8 @@ footer {
     align-self: center;
     border: 10px;
     margin: 10px;
+  }
+
+  .message404 {
+    text-align: center;
   }
