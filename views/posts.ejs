@@ -1,35 +1,5 @@
 <!DOCTYPE html>
-<!--
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<nav>
- <a href="/">Home </a> |
- <a href="/posts">Posts page</a> |
- <a href="/contactus">Contact us</a>
- </nav>
-<div class="posts list">
- <h2>All posts</h2>
- <% if (posts.length == 0) { %>
-    <p> You did not post anything... </p>
- <% } %>
- <% posts.forEach(post => { %>
- <h3 class="title">
- <%= post.title %>
- </h3>
- <p class="body">
- <%= post.body %>
- </p>
- <% }) %>
- </div>
-<footer class="footer">
- <p>© WAD 2021 </p>
-</footer>
-</body>
-</html> -->
+
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -44,38 +14,32 @@
  <div class="posts list">
  <% if (posts.length > 0) { %>
  <% posts.forEach(post => { %>
- <!-- <a class="singlepost" href="/singlepost/<%= post.id %>">
- <h3 class="title">
- <%= post.title %>
- </h3>
- <p class="body">
- <%= post.body %>
- </p>
- <p class="likesCount">
-    <%= post.likes %>
-    </p>
-   </div>
-   <p> <%= post.id %></p>
-   </div>
- </a>
- <button class="increaselikes" data-put="<%= post.id %>">Like</button> -->
-
- <div class="singlepost" href="/singlepost/<%= post.id %>">
- <div class="CommentBox">
+ 
+<div class="CommentBox">
+ <a class="singlepost" href="/singlepost/<%= post.id %>">
+ 
    <div class="commentHeader">
      <img class="userIcon" src="<%= post.userpicture %>">
      <p class="timeStamp"><%= post.timestamp %></p>
    </div>
    <p><%= post.title %></p>
-   <img src="<%= post.commentpicture %>">
+   <img class="commentImg" src="<%= post.commentpicture %>">
    <p><%= post.body %></p>
-   <div class="commentFooter">
-      <button class="increaselikes" data-put="<%= post.id %>"></button>
-     <p class="babyYodaCount"> <%= post.likes %> baby Yodas</p>
-   </div>
+   
+ </a>
+ <div class="commentFooter">
+   <button class="increaselikes" data-put="<%= post.id %>"></button>
+  <p class="babyYodaCount"> <%= post.likes %> baby Yodas</p>
  </div>
+ 
+</div>
+ <% }) %>
+ <% } else { %>
+ <p>You did not post anything...</p>
+ <% } %>
  </div>
- <script>
+</section>
+<script>
    let putreq = document.querySelector('button.increaselikes');
    putreq.addEventListener('click', (e) => {
    let endpoint = `/posts/${putreq.dataset.put}`;
@@ -84,25 +48,7 @@
    }).then(window.location.href = '/posts')
    });
    </script>
- <% }) %>
- <% } else { %>
- <p>You did not post anything...</p>
- <% } %>
- </div>
-</section>
- <!-- <button class="increaselikes" data-put="<%= posts.id %>">like</button>
- <script>
-    const putreq = document.queryselector('button.increaselikes');
-    putreq.addeventlistener('click', (e) => {
-    const endpoint = `/posts/${putreq.dataset.put}`;
-    fetch(endpoint, {
-    method: 'put',
-    })
-    });
-    </script> -->
-   
 
-    
  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

@@ -196,7 +196,12 @@ header + section {
     background-color: aliceblue;
     padding: 5px;
 }
-
+.commentImg{
+    width: 100%;
+}
+.singlepost {
+    width: 100%;
+} 
 button{
     box-sizing: border-box;
     height: 30px;
@@ -219,7 +224,7 @@ footer {
     background-color: #5d5c61;
   }
 
-  a {
+  .navlink {
     color: aliceblue;
     font-size: 1.5vw;
     align-self: center;
