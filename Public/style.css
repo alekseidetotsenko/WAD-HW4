@@ -143,6 +143,8 @@ section {
 .timeStamp {
     color: gray;
     padding: 10px;
+    font-size: 1vw;
+
 }
 
 .commentFooter {
@@ -196,7 +198,12 @@ header + section {
     background-color: aliceblue;
     padding: 5px;
 }
-
+.commentImg{
+    width: 100%;
+}
+.singlepost {
+    width: 100%;
+} 
 button{
     box-sizing: border-box;
     height: 30px;
@@ -217,12 +224,32 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: #5d5c61;
+    position: relative;
+    bottom: 0;
   }
 
-  a {
+  .navlink {
     color: aliceblue;
     font-size: 1.5vw;
     align-self: center;
     border: 10px;
     margin: 10px;
+  }
+
+  .message404 {
+    text-align: center;
+  }
+
+  .delete{
+      position: relative;
+      left: 5%;
+      box-sizing: border-box;
+      height: 30px;
+      width: 10%;
+      margin: 0;
+      padding: 5px;
+      border: 1px solid #5d5c61;
+      cursor: pointer;
+      background-color:#0b5e92;
+      color: white;
   }

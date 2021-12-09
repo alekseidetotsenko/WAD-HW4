@@ -28,33 +28,39 @@
   
   </div> -->
 
-  <div class="CommentBox">
-      <div class="commentHeader">
-        <img class="userIcon" src="wasp.jpg" alt="User icon">
-        <p class="timeStamp"><%= posts.timestamp %></p>
-      </div>
-      <p><%= posts.title %></p>
-      <img src="<%= posts.commentpicture %>" >
-      <p><%= posts.body %></p>
-      <div class="commentFooter">
-      </a>
-        <button class="increaselikes" data-put="<%= posts.id %>"></button>
-        <p class="babyYodaCount"> <%= posts.likes %> baby Yodas</p>
-        <button class="delete" data-del="<%= posts.id %>">Delete</button>
-      </div>
+ <div class="CommentBox">
+    <div class="commentHeader">
+      <img class="userIcon" src="wasp.jpg" alt="User icon">
+      <p class="timeStamp"><%= posts.timestamp %></p>
     </div>
-  </section>
-
-  <script>
-    const delreq = document.querySelector('button.delete');
-    delreq.addEventListener('click', (e) => {
-      const endpoint = `/posts/${delreq.dataset.del}`;
-      fetch(endpoint, {
-        method: 'DELETE',
-      }).then(window.location.href = '/posts')
-    });
+    <p><%= posts.title %></p>
+    <img class="commentImg" src="<%= posts.commentpicture %>">
+    <p><%= posts.body %></p>
+    <div class="commentFooter">
+       <button class="increaselikes" data-put="<%= posts.id %>"></button>
+      <p class="babyYodaCount"> <%= posts.likes %> baby Yodas</p>
+    </div>
+  </div>
+  <button class="delete" data-del="<%= posts.id %>">Delete</button>
+</section>
+<script>
+  let putreq = document.querySelector('button.increaselikes');
+  putreq.addEventListener('click', (e) => {
+  let endpoint = `/posts/${putreq.dataset.put}`;
+  fetch(endpoint, {
+  method: 'PUT',
+  }).then(window.location.href = '/posts')
+  });
   </script>
-  
-  <%- include('./partials/footer.ejs') %>
+ <script>
+ const delreq = document.querySelector('button.delete');
+ delreq.addEventListener('click', (e) => {
+ const endpoint = `/posts/${delreq.dataset.del}`;
+ fetch(endpoint, {
+ method: 'DELETE',
+ }).then(window.location.href = '/posts')
+ });
+ </script>
+ <%- include('./partials/footer.ejs') %>
 </body>
 </html>

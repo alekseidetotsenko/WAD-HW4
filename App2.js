@@ -13,7 +13,7 @@ app.listen(3000, () => {
     console.log("Server is listening to port 3000")
 });
 app.get('/', (req, res) => {
-    res.render('index');
+    res.status(404).render('404');
 });
 app.get('/posts', async(req, res) => {
     try {
