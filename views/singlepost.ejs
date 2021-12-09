@@ -8,29 +8,11 @@
   <title>Single Post</title>
 </head>
 <body>
-      <%- include('./partials/navbar.ejs') %>
-  <section>
-  <!-- <div class="singlepost">
-  <h1>Single post page</h1>
-  <h2>
-  <%= posts.title %>
-  </h2>
-  <div class="content">
-  <p>
-  <%= posts.body %>
-  </p>
-  </div>
-  <div class="likesCount">
-  <p>   
-  <%= posts.likes %>
-  </p>
-  </div>
-  
-  </div> -->
-
+    <%- include('./partials/navbar.ejs') %>
+ <section>
  <div class="CommentBox">
     <div class="commentHeader">
-      <img class="userIcon" src="wasp.jpg" alt="User icon">
+      <img class="userIcon" src="https://cdn.vox-cdn.com/thumbor/3-aTzyoIvirEUDABoLUCTjv84LY=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22326168/gandalf_shire_lord_of_the_rings.jpg" alt="User icon">
       <p class="timeStamp"><%= posts.timestamp %></p>
     </div>
     <p><%= posts.title %></p>

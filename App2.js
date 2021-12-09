@@ -19,7 +19,7 @@ app.get('/posts', async(req, res) => {
     try {
         console.log("get posts request has arrived");
         const posts = await pool.query(
-            "SELECT * FROM public.posts"
+            "SELECT * FROM public.posts order by timestamp desc"
         );
         res.render('posts', { posts: posts.rows });
     } catch (err) {
