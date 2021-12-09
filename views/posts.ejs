@@ -28,22 +28,24 @@
             </div>
           </a>
           <button class="increaselikes" data-put="<%= post.id %>">Like</button> -->
-
-          <div class="singlepost" href="/singlepost/<%= post.id %>">
-            <div class="CommentBox">
+          <div class="CommentBox">
+            <a class="singlepost" href="/singlepost/<%= post.id %>">
+            
               <div class="commentHeader">
                 <img class="userIcon" src="<%= post.userpicture %>">
                 <p class="timeStamp"><%= post.timestamp %></p>
               </div>
               <p><%= post.title %></p>
-              <img src="<%= post.commentpicture %>">
+              <img class="commentImg" src="<%= post.commentpicture %>">
               <p><%= post.body %></p>
-              <div class="commentFooter">
-                  <button class="increaselikes" data-put="<%= post.id %>"></button>
-                  <p class="babyYodaCount" data-get="<%= post.likes %>"> <%= post.likes %> baby Yodas</p>
-              </div>
+              
+            </a>
+            <div class="commentFooter">
+              <button class="increaselikes" data-put="<%= post.id %>"></button>
+             <p class="babyYodaCount"> <%= post.likes %> baby Yodas</p>
             </div>
-          </div>
+            
+           </div>
         <% }) %>
       <% } else { %>
         <p>You did not post anything...</p>
