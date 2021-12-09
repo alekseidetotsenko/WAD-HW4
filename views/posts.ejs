@@ -32,66 +32,68 @@
 </html> -->
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="/style.css">
- <title>Posts</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>Posts</title>
 </head>
 <body>
- <%- include('./partials/navbar.ejs') %>
- <section>
- <div class="posts list">
- <% if (posts.length > 0) { %>
- <% posts.forEach(post => { %>
- <!-- <a class="singlepost" href="/singlepost/<%= post.id %>">
- <h3 class="title">
- <%= post.title %>
- </h3>
- <p class="body">
- <%= post.body %>
- </p>
- <p class="likesCount">
-    <%= post.likes %>
-    </p>
-   </div>
-   <p> <%= post.id %></p>
-   </div>
- </a>
- <button class="increaselikes" data-put="<%= post.id %>">Like</button> -->
+  <%- include('./partials/navbar.ejs') %>
+  <section>
+    <div class="posts list">
+      <% if (posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+          <!-- <a class="singlepost" href="/singlepost/<%= post.id %>">
+          <h3 class="title">
+          <%= post.title %>
+          </h3>
+          <p class="body">
+          <%= post.body %>
+          </p>
+          <p class="likesCount">
+            <%= post.likes %>
+            </p>
+            </div>
+            <p> <%= post.id %></p>
+            </div>
+          </a>
+          <button class="increaselikes" data-put="<%= post.id %>">Like</button> -->
 
- <div class="singlepost" href="/singlepost/<%= post.id %>">
- <div class="CommentBox">
-   <div class="commentHeader">
-     <img class="userIcon" src="<%= post.userpicture %>">
-     <p class="timeStamp"><%= post.timestamp %></p>
-   </div>
-   <p><%= post.title %></p>
-   <img src="<%= post.commentpicture %>">
-   <p><%= post.body %></p>
-   <div class="commentFooter">
-      <button class="increaselikes" data-put="<%= post.id %>"></button>
-     <p class="babyYodaCount"> <%= post.likes %> baby Yodas</p>
-   </div>
- </div>
- </div>
- <script>
-   let putreq = document.querySelector('button.increaselikes');
-   putreq.addEventListener('click', (e) => {
-   let endpoint = `/posts/${putreq.dataset.put}`;
-   fetch(endpoint, {
-   method: 'PUT',
-   }).then(window.location.href = '/posts')
-   });
-   </script>
- <% }) %>
- <% } else { %>
- <p>You did not post anything...</p>
- <% } %>
- </div>
-</section>
- <!-- <button class="increaselikes" data-put="<%= posts.id %>">like</button>
- <script>
+          <div class="singlepost" href="/singlepost/<%= post.id %>">
+            <div class="CommentBox">
+              <div class="commentHeader">
+                <img class="userIcon" src="<%= post.userpicture %>">
+                <p class="timeStamp"><%= post.timestamp %></p>
+              </div>
+              <p><%= post.title %></p>
+              <img src="<%= post.commentpicture %>">
+              <p><%= post.body %></p>
+              <div class="commentFooter">
+                  <button class="increaselikes" data-put="<%= post.id %>"></button>
+                  <p class="babyYodaCount" data-get="<%= post.likes %>"> <%= post.likes %> baby Yodas</p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>You did not post anything...</p>
+      <% } %>
+    </div>    
+  </section>
+
+  <script>
+    const putreq = document.querySelectorAll('button.increaselikes');
+    putreq.forEach(el => el.addEventListener('click', event => {
+          const endpoint = `/posts/${el.dataset.put}`;
+          fetch(endpoint, {
+            method: 'PUT',
+          }).then(window.location.href = '/posts');
+    }));
+  </script>
+
+  <!-- <button class="increaselikes" data-put="<%= posts.id %>">like</button>
+  <script>
     const putreq = document.queryselector('button.increaselikes');
     putreq.addeventlistener('click', (e) => {
     const endpoint = `/posts/${putreq.dataset.put}`;
@@ -100,9 +102,7 @@
     })
     });
     </script> -->
-   
-
     
- <%- include('./partials/footer.ejs') %>
+  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="/style.css">
- <title>Single Post</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>Single Post</title>
 </head>
 <body>
-    <%- include('./partials/navbar.ejs') %>
- <section>
- <!-- <div class="singlepost">
-<h1>Single post page</h1>
- <h2>
- <%= posts.title %>
- </h2>
- <div class="content">
- <p>
- <%= posts.body %>
- </p>
-</div>
- <div class="likesCount">
- <p>   
- <%= posts.likes %>
-</p>
- </div>
- 
- </div> -->
-
- <div class="CommentBox">
-    <div class="commentHeader">
-      <img class="userIcon" src="wasp.jpg" alt="User icon">
-      <p class="timeStamp"><%= posts.timestamp %></p>
-    </div>
-    <p><%= posts.title %></p>
-    <img src="<%= posts.commentpicture %>" >
-    <p><%= posts.body %></p>
-    <div class="commentFooter">
-    </a>
-       <button class="increaselikes" data-put="<%= posts.id %>"></button>
-      <p class="babyYodaCount"> <%= posts.likes %> baby Yodas</p>
-      <button class="delete" data-del="<%= posts.id %>">Delete</button>
-    </div>
+      <%- include('./partials/navbar.ejs') %>
+  <section>
+  <!-- <div class="singlepost">
+  <h1>Single post page</h1>
+  <h2>
+  <%= posts.title %>
+  </h2>
+  <div class="content">
+  <p>
+  <%= posts.body %>
+  </p>
   </div>
-</section>
- <script>
- const delreq = document.querySelector('button.delete');
- delreq.addEventListener('click', (e) => {
- const endpoint = `/posts/${delreq.dataset.del}`;
- fetch(endpoint, {
- method: 'DELETE',
- }).then(window.location.href = '/posts')
- });
- </script>
- <%- include('./partials/footer.ejs') %>
+  <div class="likesCount">
+  <p>   
+  <%= posts.likes %>
+  </p>
+  </div>
+  
+  </div> -->
+
+  <div class="CommentBox">
+      <div class="commentHeader">
+        <img class="userIcon" src="wasp.jpg" alt="User icon">
+        <p class="timeStamp"><%= posts.timestamp %></p>
+      </div>
+      <p><%= posts.title %></p>
+      <img src="<%= posts.commentpicture %>" >
+      <p><%= posts.body %></p>
+      <div class="commentFooter">
+      </a>
+        <button class="increaselikes" data-put="<%= posts.id %>"></button>
+        <p class="babyYodaCount"> <%= posts.likes %> baby Yodas</p>
+        <button class="delete" data-del="<%= posts.id %>">Delete</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const delreq = document.querySelector('button.delete');
+    delreq.addEventListener('click', (e) => {
+      const endpoint = `/posts/${delreq.dataset.del}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      }).then(window.location.href = '/posts')
+    });
+  </script>
+  
+  <%- include('./partials/footer.ejs') %>
 </body>
 </html>
