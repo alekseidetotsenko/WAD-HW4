@@ -1,3 +1,4 @@
+
 html, body {
     margin: 0;
     padding: 0;
@@ -124,8 +125,11 @@ section {
     flex-direction: column;
 }
 
+.singlepost {
+    width: 100%;
+} 
+
 .CommentBox {
-    width: 80%;
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -201,9 +205,7 @@ header + section {
 .commentImg{
     width: 100%;
 }
-.singlepost {
-    width: 100%;
-} 
+
 button{
     box-sizing: border-box;
     height: 30px;
