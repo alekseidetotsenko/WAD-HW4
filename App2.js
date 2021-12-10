@@ -71,7 +71,7 @@ app.put('/posts/:id', async(req, res) => {
         ); 
         const updatepostlikegiven = await pool.query(
             "UPDATE public.posts set likegiven = 'disabled' WHERE id = $1;", [id]
-        ); 
+        );
     } catch (err) {
         console.error(err.message);
     }

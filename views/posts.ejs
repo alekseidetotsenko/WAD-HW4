@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
   <title>Posts</title>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <body>
   <%- include('./partials/navbar.ejs') %>
@@ -30,7 +31,6 @@
           <button class="increaselikes" data-put="<%= post.id %>">Like</button> -->
           <div class="CommentBox">
             <a class="singlepost" href="/singlepost/<%= post.id %>">
-            
               <div class="commentHeader">
                 <img class="userIcon" src="<%= post.userpicture %>">
                 <p class="timeStamp"><%= post.timestamp %></p>
@@ -38,14 +38,12 @@
               <p><%= post.title %></p>
               <img class="commentImg" src="<%= post.commentpicture %>">
               <p><%= post.body %></p>
-              
             </a>
             <div class="commentFooter">
-              <button class="increaselikes" data-put="<%= post.id %>"></button>
-             <p class="babyYodaCount"> <%= post.likes %> baby Yodas</p>
+              <button class="likesBtn" id="likesBtn_<%= post.id %>" data-put="<%= post.id %>"></button>
+              <p class="babyYodaCount"><span id="counter_<%= post.id %>"><%= post.likes %></span> baby Yodas</p>
             </div>
-            
-           </div>
+          </div>
         <% }) %>
       <% } else { %>
         <p>You did not post anything...</p>
@@ -54,13 +52,20 @@
   </section>
 
   <script>
-    const putreq = document.querySelectorAll('button.increaselikes');
-    putreq.forEach(el => el.addEventListener('click', event => {
-          const endpoint = `/posts/${el.dataset.put}`;
-          fetch(endpoint, {
-            method: 'PUT',
-          }).then(window.location.href = '/posts');
-    }));
+    putreq = document.querySelectorAll('.likesBtn')
+    putreq.forEach(el => {
+      const postId = el.dataset.put;
+      let counterTag = $('#counter_' + postId);
+      $('#likesBtn_' + postId).click(function() {
+        likes = parseInt(counterTag.text());
+        counterTag.text(++likes);
+        $('#likesBtn_' + postId).attr('disabled','disabled');
+        const endpoint = `/posts/${postId}`;
+        fetch(endpoint, {
+          method: 'PUT'
+        });
+      });
+    });
   </script>
 
   <!-- <button class="increaselikes" data-put="<%= posts.id %>">like</button>
