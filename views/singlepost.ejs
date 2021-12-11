@@ -13,9 +13,9 @@
  <div class="CommentBox">
     <div class="commentHeader">
       <img class="userIcon" src="<%= posts.userpicture %>" alt="User icon">
-      <p class="timeStamp"><%= posts.timestamp %></p>
+      <p class="timeStamp"><%= posts.timestamp.toUTCString() %></p>
     </div>
-    <p><%= posts.title %></p>
+    <p class="post_title"><%= posts.title %></p>
     <img class="commentImg" src="<%= posts.commentpicture %>">
     <p><%= posts.body %></p>
     <div class="commentFooter">

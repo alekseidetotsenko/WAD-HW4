@@ -33,9 +33,9 @@
             <a class="singlepost" href="/singlepost/<%= post.id %>">
               <div class="commentHeader">
                 <img class="userIcon" src="<%= post.userpicture %>">
-                <p class="timeStamp"><%= post.timestamp %></p>
+                <p class="timeStamp"><%= post.timestamp.toUTCString() %></p>
               </div>
-              <p><%= post.title %></p>
+              <p class="post_title"><%= post.title %></p>
               <img class="commentImg" src="<%= post.commentpicture %>">
               <p><%= post.body %></p>
             </a>
@@ -60,10 +60,10 @@
     putreq.forEach(el => {
       const postId = el.dataset.put;
       let counterTag = $('#counter_' + postId);
-      $('#likesBtn_' + postId).click(function() {
+      $(el).click(function() {
         likes = parseInt(counterTag.text());
         counterTag.text(++likes);
-        $('#likesBtn_' + postId).attr('disabled','disabled');
+        $(el).attr('disabled','disabled');
         const endpoint = `/posts/${postId}`;
         fetch(endpoint, {
           method: 'PUT'

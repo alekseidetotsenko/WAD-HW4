@@ -163,6 +163,10 @@ a {
 
 }
 
+.post_title {
+    font-size: 20px;
+}
+
 .commentFooter {
     display: flex;
     flex-direction: row;
