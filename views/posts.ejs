@@ -40,7 +40,11 @@
               <p><%= post.body %></p>
             </a>
             <div class="commentFooter">
-              <button class="likesBtn" id="likesBtn_<%= post.id %>" data-put="<%= post.id %>"></button>
+              <% if (post.likegiven == '') { %>
+                <button class="likesBtn" id="likesBtn_<%= post.id %>" data-put="<%= post.id %>"></button>
+              <% } else { %>
+                <button class="likesBtn" id="likesBtn_<%= post.id %>" data-put="<%= post.id %>" disabled></button>
+              <% } %>
               <p class="babyYodaCount"><span id="counter_<%= post.id %>"><%= post.likes %></span> baby Yodas</p>
             </div>
           </div>
